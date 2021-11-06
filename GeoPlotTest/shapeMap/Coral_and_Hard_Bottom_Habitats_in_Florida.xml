@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="UTF-8"?><metadata>
+    <idinfo>
+        <citation>
+            <citeinfo>
+                <origin/>
+                <title>Coral and Hard Bottom Habitats Florida</title>
+                <geoform>vector digital data</geoform>
+                <onlink>https://myfwc.com/research/gis/</onlink>
+                <onlink>https://gis.myfwc.com/Data/KMZ_files/Benthic - Coral - Gulf-FL.kmz</onlink>
+                <onlink>https://gis.myfwc.com/Data/KMZ_files/Benthic - Hardbottom - Gulf-FL.kmz</onlink>
+            </citeinfo>
+        </citation>
+        <descript>
+            <abstract>This GIS data set represents a compilation of coral and other hard bottom type data available to FWRI as of July, 2013. The extent, time frame and/or resolution of source data sets vary. Mapping methods and minimum mapping units also differ among source datasets. This is not intended to be a comprehensive survey - data gaps do exist. Sliver polygons also exist due to differences in overlapping study areas, as well as some present in the source data sets. Refer to attribute table and metadata for references to source data. Worm and oyster reefs are not included in this compilation. See separate data sets for worm and oyster reefs.</abstract>
+            <purpose>This data set represents hardbottom areas that have been mapped in and around Florida.</purpose>
+            <supplinf>Prior to July 1, 2004, the Fish and Wildlife Research Institute (FWRI) was known as the Florida Marine Research Institute (FMRI). The institute name has not been changed in historical data sets or references to work completed by the Florida Marine Research Institute. The institute name has been changed in references to ongoing research, new research, and contact information.</supplinf>
+        </descript>
+        <timeperd>
+            <timeinfo>
+                <rngdates>
+                    <begdate>19600101</begdate>
+                    <enddate>20110101</enddate>
+                </rngdates>
+            </timeinfo>
+            <current>Ground condition</current>
+        </timeperd>
+        <status>
+            <progress>Complete</progress>
+            <update>None planned</update>
+        </status>
+        <spdom>
+            <bounding>
+                <westbc>-97.954819</westbc>
+                <eastbc>-74.762056</eastbc>
+                <northbc>36.748314</northbc>
+                <southbc>23.76199</southbc>
+            </bounding>
+        </spdom>
+        <keywords>
+            <theme>
+                <themekt>ISO 19115 Topic Category</themekt>
+                <themekey>oceans</themekey>
+            </theme>
+            <theme>
+                <themekt>FWC Theme</themekt>
+                <themekey>mapping</themekey>
+                <themekey>benthic</themekey>
+                <themekey>corals (reefs</themekey>
+                <themekey>etc.)</themekey>
+                <themekey>GIS</themekey>
+            </theme>
+            <theme>
+                <themekt>Habitat</themekt>
+                <themekey>hard bottom</themekey>
+            </theme>
+            <place>
+                <placekt>FWC Regions</placekt>
+                <placekey>Southwest</placekey>
+                <placekey>North Central</placekey>
+                <placekey>Northeast</placekey>
+                <placekey>Northwest</placekey>
+                <placekey>South</placekey>
+            </place>
+            <place>
+                <placekt>Water Management Districts</placekt>
+                <placekey>St. Johns River</placekey>
+                <placekey>South Florida</placekey>
+                <placekey>Southwest Florida</placekey>
+                <placekey>Suwannee River</placekey>
+                <placekey>Northwest Florida</placekey>
+            </place>
+            <place>
+                <placekt>FWC Place</placekt>
+                <placekey>Florida Keys</placekey>
+                <placekey>Florida</placekey>
+                <placekey>Gulf of Mexico</placekey>
+                <placekey>Atlantic Ocean</placekey>
+                <placekey>Florida Keys National Marine Sanctuary</placekey>
+                <placekey>Florida Bay</placekey>
+            </place>
+        </keywords>
+        <accconst>Available without restriction. All data must be verified by Principal Investigator or Group Database Analyst prior to release. These data are unrestricted. Where possible, always acquire this dataset directly from FWC as other sources may have altered the original data.</accconst>
+        <useconst>Users are encouraged to read and fully comprehend the metadata record prior to using these data. Please acknowledge the Florida Fish and Wildlife Conservation Commission (FWC) as the data source for any products developed from these data. Users should be aware that comparison with other data sets for the same area may be inaccurate due to inconsistencies resulting from changes in mapping conventions, data collection techniques, and computer processes over time. FWC shall not be liable for improper or incorrect use of these data.</useconst>
+        <ptcontac>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Florida Fish and Wildlife Conservation Commission-Fish and Wildlife Research Institute</cntorg>
+                    <cntper>GISLibrarian</cntper>
+                </cntorgp>
+                <cntpos>GIS Data Librarian</cntpos>
+                <cntaddr>
+                    <addrtype>mailing and physical</addrtype>
+                    <address>100 Eighth Avenue Southeast</address>
+                    <address>Fish and Wildlife Research Institute</address>
+                    <city>St. Petersburg</city>
+                    <state>Florida</state>
+                    <postal>33701</postal>
+                    <country>AF</country>
+                </cntaddr>
+                <cntvoice>727-896-8626</cntvoice>
+                <cntfax>727-893-1679</cntfax>
+                <cntemail>GISLibrarian@MyFWC.com</cntemail>
+            </cntinfo>
+        </ptcontac>
+        <secinfo>
+            <secsys>FWRI-DC</secsys>
+            <sechandl>Available without restriction</sechandl>
+        </secinfo>
+        <native>ESRI ArcCatalog 9.3.1.3000</native>
+    </idinfo>
+    <dataqual>
+        <attracc>
+            <attraccr>Attributes are based on information given about the source data. Accuracy has not been tested.</attraccr>
+        </attracc>
+        <logic>These data are logically consistent. A topology was run to eliminate overlapping polygons.</logic>
+        <complete>These data represent the data available to FWRI as of July, 2013. This is a data compilation, not an exhaustive study. Data gaps do exist. One minute grid polygons from the SEAMAP hardbottom mapping project are not included because of coarse resolution: these data can be requested from GISLibrarian@myfwc.com.</complete>
+        <posacc>
+            <horizpa>
+                <horizpar>Positional accuracy varies by source data set. Positional accuracy is unaltered by FWRI.</horizpar>
+            </horizpa>
+        </posacc>
+        <lineage>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20010101</pubdate>
+                        <title>benthic_south_fl</title>
+                    </citeinfo>
+                </srccite>
+                <srcscale>48000</srcscale>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <mdattim>
+                            <sngdate>
+                                <caldate>19950101</caldate>
+                            </sngdate>
+                            <sngdate>
+                                <caldate>19910101</caldate>
+                            </sngdate>
+                            <sngdate>
+                                <caldate>19920101</caldate>
+                            </sngdate>
+                        </mdattim>
+                    </timeinfo>
+                    <srccurr>ground condition</srccurr>
+                </srctime>
+                <srccitea>benthic_south_fl</srccitea>
+                <srccontr>This data set was only used in locations where no more recent data were present or only uninterpreted polygons were present. It was also included in the Unified Florida Reef Tract Map compilation in Florida Bay. For information on reclassification methods, see the report associated with that data set. "Hardbottom", "Hardbottom with Seagrass", "Patch Reef", and "Platform Margin Reef" polygons; as well as seagrass polygons identified as "Dense Patches in a Matrix of Hardbottom" were selected from this data set. "Patch Reef" and "Platform Margin Reef" were reclassified as "Coral Reef", with the exception of polygons with an A_CODE described as "Coral Patches in Bare Sand", which were not included in the compilation.</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20041122</pubdate>
+                        <title>benthic_broward_2004</title>
+                    </citeinfo>
+                </srccite>
+                <srcscale>6000</srcscale>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <sngdate>
+                            <caldate>20041122</caldate>
+                        </sngdate>
+                    </timeinfo>
+                    <srccurr>publication date</srccurr>
+                </srctime>
+                <srccitea>benthic_broward_2004</srccitea>
+                <srccontr>This data set is included in the Unified Florida Reef Tract Map compilation. For information on reclassification methods, see the report associated with that data set.</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20090630</pubdate>
+                        <title>benthic_n_miamidade_2009</title>
+                    </citeinfo>
+                </srccite>
+                <srcscale>6000</srcscale>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <sngdate>
+                            <caldate>20090630</caldate>
+                        </sngdate>
+                    </timeinfo>
+                    <srccurr>publication date</srccurr>
+                </srctime>
+                <srccitea>benthic_n_miamidade_2009</srccitea>
+                <srccontr>This data set is included in the Unified Florida Reef Tract Map compilation. For information on reclassification methods, see the report associated with that data set.</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20080930</pubdate>
+                        <title>benthic_biscayne_2005</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <sngdate>
+                            <caldate>20050101</caldate>
+                        </sngdate>
+                    </timeinfo>
+                    <srccurr>ground condition</srccurr>
+                </srctime>
+                <srccitea>benthic_biscayne_2005</srccitea>
+                <srccontr>This data set is included in the Unified Florida Reef Tract Map compilation. For information on reclassification methods, see the report associated with that data set.</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20080528</pubdate>
+                        <title>benthic_tortugas_2006</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <sngdate>
+                            <caldate>20060101</caldate>
+                        </sngdate>
+                    </timeinfo>
+                    <srccurr>ground condition</srccurr>
+                </srctime>
+                <srccitea>benthic_tortugas_2006</srccitea>
+                <srccontr>This data set is only used in a small area not covered by more recent data from the Unified Florida Reef Tract Map compilation. "Aggregate Patch Reefs", "Aggregate Reef", "Individual Patch Reef", and "Spur and Groove" polygons were reclassified as "Coral Reef". "Pavement" polygons were reclassified as "Hardbottom".</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>19980101</pubdate>
+                        <title>seamap_poly1</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <mdattim>
+                            <sngdate>
+                                <caldate>19940101</caldate>
+                            </sngdate>
+                            <sngdate>
+                                <caldate>19860101</caldate>
+                            </sngdate>
+                            <sngdate>
+                                <caldate>19930101</caldate>
+                            </sngdate>
+                        </mdattim>
+                    </timeinfo>
+                    <srccurr>various - see individual polygon "sourcedate" attribute</srccurr>
+                </srctime>
+                <srccitea>seamap_poly1</srccitea>
+                <srccontr>"Hard Bottom" and "Probable Hard Bottom" polygons were selected from this data set. In areas of overlap with other more recent data, the other data sources were used. The data classification was preserved in the compilation. In the METADATA attribute - source studies are listed. These codes are as follows: CA02 = Field Survey of the Fernandina Harbor Candidate Ocean Dredge Material Disposal Site, 22 May 1986. A field survey of a proposed offshore dredged material disposal site, where extensive hard bottom was found, and a candidate offshore dredged material disposal site, which contained no hard bottom, in the vicinity of the Fernandina Harbor area (Continental Shelf Associates, Inc., 1986). The disposal sites were sampled using SCUBA, video, and fathometer to determine bottom type. CEXX = U.S. Army Corps of Engineers, Jacksonville Dist., Coast of Florida Erosion and Storm Effects Study. Data were provided by the USACOE, Jacksonville Office, on hard-bottom habitat off Dade, Broward, and Palm Beach counties. The data were collected during the Coast of Florida Erosion and Storm Effects Study. The data were collected during a side-scan sonar mapping survey by Continental Shelf Associates, Inc. FL08 = Indian Riv. Co.-Sebast. Inl. Tx. Dist. Aerial Photographic Surv. of Nearshore Waters of Indian River Co. An ArcInfo database of the nearshore benthic habitat off Indian River County and a small region of southern Brevard County mapped by FMRI staff performing stereo photo interpretation on 1:7,200 scale natural color aerial photography by Aero Map U.S., Inc., Ormond Beach, Florida, taken July 1994. SC01 = Shore Protect. Proj. Side Scan Sonar Surv., Martin Co., Florida, Surv. No. 93-206, June 1993. A 1993 nearshore side-scan sonar and hydrographic survey conducted for beach nourishment in the northern half of Martin County (Sea Systems Corporation, 1993) provided areal data. The data, which show evidence of extensive hardbottom, were originally received from the USACOE as a CAD file and converted to ArcInfo.</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <title>sediment_gulfofmexico</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <rngdates>
+                            <begdate>19600101</begdate>
+                            <enddate>19700101</enddate>
+                        </rngdates>
+                    </timeinfo>
+                    <srccurr>Publication date of map is 1983 - however the sediment data is from a compilation of studies from the 1960s and 1970s</srccurr>
+                </srctime>
+                <srccitea>sediment_gulfofmexico</srccitea>
+                <srccontr>Selected "Hard Banks" from this data set. In areas of overlap with other more recent data, the other data sources were used. This data set was so coarse, in nearshore areas where other studies were uninterpretable, this data set was not used to fill gaps. All selected polygons were reclassified as "Hardbottom".</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20050914</pubdate>
+                        <title>benthic_flbay_2004</title>
+                    </citeinfo>
+                </srccite>
+                <srcscale>24000</srcscale>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <mdattim>
+                            <sngdate>
+                                <caldate>20040421</caldate>
+                            </sngdate>
+                            <sngdate>
+                                <caldate>20040331</caldate>
+                            </sngdate>
+                        </mdattim>
+                    </timeinfo>
+                    <srccurr>ground condition</srccurr>
+                </srctime>
+                <srccitea>benthic_flbay_2004</srccitea>
+                <srccontr>This data was also included in the Unified Florida Reef Tract Map compilation in Florida Bay. A single "Hard Bottom" polygon came from this data set.</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20080101</pubdate>
+                        <title>Benthic Habitat East Biscayne National Park Florida 2008</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>None</typesrc>
+                <srccitea>Benthic Habitat East Biscayne National Park Florida 2008</srccitea>
+                <srccontr>This data set is included in the Unified Florida Reef Tract Map compilation. For information on reclassification methods, see the report associated with that data set.</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20130101</pubdate>
+                        <title>Unified Florida Reef Tract Map</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <rngdates>
+                            <begdate>19910101</begdate>
+                            <enddate>20110101</enddate>
+                        </rngdates>
+                    </timeinfo>
+                    <srccurr>ground condition</srccurr>
+                </srctime>
+                <srccitea>Unified Florida Reef Tract Map</srccitea>
+                <srccontr>This Unified Florida Reef Tract Map integrates the spatial geometry and classification schemes of various different benthic mapping efforts along the Florida Keys Reef Tract, Florida Bay and Gulf of Mexico coastal waters along the Florida Keys. This map employs a tiered Reclassification system which progressively aggregates classes into coarser thematic units until reaching a lowest common denominator classification which provides a common and consistent picture of the entire area. This approach provides common class values for different levels of detail allowing for flexibility in the scope of analysis. Existing benthic mapping classification values are cross-walked to CMECS classes. A CMECS descriptor field has been added to preserve classification details not available in CMECS. Reclassifications (Reclass Levels) are necessary because existing CMECS Levels to not consistently aggregate benthic classification values. Reclass Level 0 accommodates the lowest common denominator classification level to provide a consistent overview layer. Reclass Level 4 retains full thematic resolution while normalizing synonymous class values. Sources used for this compilation include: Benthic Habitats Broward County Florida 2004 (Compiled as "benthic_SEFL_2013_poly" by NCRI) Benthic Habitats of Florida Keys Derived From IKONOS satellite imagery Benthic Habitats Florida Bay 2004 (Unioned with "Benthic Habitats South Florida" as "FWC Florida Bay") Benthic Habitats Marquesas-Quicksands Florida 2006 Benthic Habitats North Miami-Dade Florida 2009 (Compiled as "benthic_SEFL_2013_poly" by NCRI) Benthic Habitats Offshore Palm Beach County Florida 2002 (Compiled as "benthic_SEFL_2013_poly" by NCRI) Benthic Habitats Dry Tortugas Florida 2010 Benthic Habitats Biscayne Bay 2005 (Compiled as "Biscayne_NPS") Benthic Habitat East Biscayne National Park Florida 2008 (Compiled as "Biscayne_NPS") Benthic Habitats South Florida (Unioned with "Benthic Habitats Florida Bay 2004" as "FWC Florida Bay") The data were reclassified as follows in the statewide coral hardbottom compilation: All polygons with ClassLv 0 were included with the exception of those with a ClassLv4 of "Wormrock". (Worm reefs are maintained as a separate compilation) Polygons with ClassLv1 of "Aggregate Reef" or "Individual or Aggregated Patch Reef" were classified as "Coral Reef". Polygons with a ClassLv1 of "Pavement", "Reef Rubble", or "Ridge" were classified as "Hardbottom". If a polygon classified as "Hardbottom" also contained Seagrass in the ClassLv4 attribute then it was classified as "Hardbottom with Seagrass".</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <title>coral_patchreef_keys_poly</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <rngdates>
+                            <begdate>19990101</begdate>
+                            <enddate>20110101</enddate>
+                        </rngdates>
+                    </timeinfo>
+                    <srccurr>ground condition</srccurr>
+                </srctime>
+                <srccitea>coral_patchreef_keys_poly</srccitea>
+                <srccontr>Individual patch reefs were classified as "Coral Reef". Polygons from this source were added to the compilation only if no data was present in the Unified Florida Reef Tract Map compilation.</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <title>Benthic Habitats Dry Tortugas Florida 2010</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <sngdate>
+                            <caldate>20100101</caldate>
+                        </sngdate>
+                    </timeinfo>
+                    <srccurr>publication date</srccurr>
+                </srctime>
+                <srccitea>Benthic Habitats Dry Tortugas Florida 2010</srccitea>
+                <srccontr>This data set is included in the Unified Florida Reef Tract Map compilation. For information on reclassification methods, see the report associated with that data set.</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20110601</pubdate>
+                        <title>Benthic Habitats Marquesas-Quicksands Florida 2006</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <sngdate>
+                            <caldate>20060101</caldate>
+                        </sngdate>
+                    </timeinfo>
+                    <srccurr>ground condition</srccurr>
+                </srctime>
+                <srccitea>Benthic Habitats Marquesas-Quicksands Florida 2006</srccitea>
+                <srccontr>This data set is included in the Unified Florida Reef Tract Map compilation. For information on reclassification methods, see the report associated with that data set.</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <title>seagrass_springscoast_poly</title>
+                    </citeinfo>
+                </srccite>
+                <srcscale>12000</srcscale>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <sngdate>
+                            <caldate>20070101</caldate>
+                        </sngdate>
+                    </timeinfo>
+                    <srccurr>ground condition</srccurr>
+                </srctime>
+                <srccitea>seagrass_springscoast_poly</srccitea>
+                <srccontr>Hardbottom polygons from 2007 Springs Coast seagrass mapping project. All polygons from this data set were classified as "Hardbottom".</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20060301</pubdate>
+                        <title>benthic_fl_keys_usgs</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <mdattim>
+                            <sngdate>
+                                <caldate>19740101</caldate>
+                            </sngdate>
+                            <sngdate>
+                                <caldate>19750101</caldate>
+                            </sngdate>
+                            <sngdate>
+                                <caldate>19830101</caldate>
+                            </sngdate>
+                            <sngdate>
+                                <caldate>19910101</caldate>
+                            </sngdate>
+                        </mdattim>
+                    </timeinfo>
+                    <srccurr>ground condition</srccurr>
+                </srctime>
+                <srccitea>benthic_fl_keys_usgs</srccitea>
+                <srccontr>This data set was only used in locations where no more recent data were present or only uninterpreted polygons were present. "Bare Pleistocene coral reef limestone" and "Bare Pleistocene oolitic limestone" polygons were reclassified as "Hardbottom" "Live Coral Reef", "Outlier Reef", and "Senile Coral Reef" polygons were reclassified as "Coral Reef".</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20070331</pubdate>
+                        <title>benthic_palmbeach_2002</title>
+                    </citeinfo>
+                </srccite>
+                <srcscale>6000</srcscale>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <sngdate>
+                            <caldate>20020101</caldate>
+                        </sngdate>
+                    </timeinfo>
+                    <srccurr>ground condition</srccurr>
+                </srctime>
+                <srccitea>benthic_palmbeach_2002</srccitea>
+                <srccontr>This data set is included in the Unified Florida Reef Tract Map compilation. For information on reclassification methods, see the report associated with that data set.</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <title>middle_ground_1979_reef</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <sngdate>
+                            <caldate>19790901</caldate>
+                        </sngdate>
+                    </timeinfo>
+                    <srccurr>ground condition</srccurr>
+                </srctime>
+                <srccitea>middle_ground_1979_reef</srccitea>
+                <srccontr>"Reef" and "Both" (Reef and Sandwave) polygons were selected from this data set. All relevant polygons were used. All selected polygons were reclassified as "Hardbottom".</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20000101</pubdate>
+                        <title>bottomtype_swcoast_fl</title>
+                    </citeinfo>
+                </srccite>
+                <srcscale>100000</srcscale>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <sngdate>
+                            <caldate>19890101</caldate>
+                        </sngdate>
+                    </timeinfo>
+                    <srccurr>publication date of source chart</srccurr>
+                </srctime>
+                <srccitea>bottomtype_swcoast_fl</srccitea>
+                <srccontr>"Coral" and "Rocky" polygons were selected from this data set. All relevant polygons were used. "Coral" polygons were reclassified as "Coral Reef" and "Rocky" polygons were reclassified as "Hardbottom".</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20110101</pubdate>
+                        <title>Benthic Habitats Florida Keys 2007-2011</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <rngdates>
+                            <begdate>20070101</begdate>
+                            <enddate>20110101</enddate>
+                        </rngdates>
+                    </timeinfo>
+                    <srccurr>ground condition</srccurr>
+                </srctime>
+                <srccitea>Benthic Habitats Florida Keys 2007-2011</srccitea>
+                <srccontr>This data set is included in the Unified Florida Reef Tract Map compilation. For information on reclassification methods, see the report associated with that data set.</srccontr>
+            </srcinfo>
+            <procstep>
+                <procdesc>FWRI staff added four attributes to each data set: SOURCEDATE - year(s) of source photography. METADATA - the information in this field will be populated with a link to the metadata for the source data set that the polygon came from once the source metadata is online. Currently it is the source data set name that can be used to reference the source metadata. DESCRIPT - is the description of the polygon type as reclassified from the source data attributes (see Source Contributions). Staff used the most recent information for an area. Staff determined the most recent information by creating footprints of all source polygons, minus any large land polygons and uninterpreted areas. Staff used these footprints with the ArcGIS Toolbox 9.3 command "erase" to eliminate areas of overlap from older source data sets. In some areas the erase function resulted in sliver polygons due to different studies using different shorelines or study boundaries. Staff manually deleted these slivers after the "erase". Once all the data were "erased" in preparation, staff "merged" all of the data into a single geodatabase feature class. Running a topology resulted in 14 overlaps, which were present in the SEAMAP source data. These overlaps were only slivers and were corrected in this compilation. If an area was uninterpreted within a more recent study, but interpreted in an older study, then the older study was used. Sliver polygons are present and are due to preserving the "Source" attribute, due to different mapped areas for overlapping studies, or they were present in the original source data sets.</procdesc>
+            </procstep>
+            <procstep>
+                <procdesc>Data for the north Miami-Dade County area were added to the compilation.</procdesc>
+                <procdate>20100401</procdate>
+            </procstep>
+            <procstep>
+                <procdesc>The hardbottom data for Springs Coast were added to the compilation.</procdesc>
+                <procdate>20100701</procdate>
+            </procstep>
+            <procstep>
+                <procdesc>The dataset was updated to include the Tortugas 2010 and Marquesas 2006 data.</procdesc>
+                <procdate>20111201</procdate>
+            </procstep>
+            <procstep>
+                <procdesc>Data for benthic_fl_keys_2006_2011_poly and Keys patch reefs were added.</procdesc>
+                <procdate>20120210</procdate>
+            </procstep>
+            <procstep>
+                <procdesc>One minute grid polygons from the SEAMAP hardbottom mapping project were removed because of coarse resolution: these data can be requested from GISLibrarian@myfwc.com. Metadata was edited to include more source information.</procdesc>
+                <procdate>20121009</procdate>
+            </procstep>
+            <procstep>
+                <procdesc>The extent of the Unified Florida Reef Tract Map was added to the compilation. After reclassifying the data to "hardbottom", "hardbottom with seagrass" and "coral reef" types, the full data set was dissolved by DESCRIPT, SOURCEDATE, and METADATA. This helped with removing some sliver polygons, but others are still present. There were also some sliver gaps in source data sets.</procdesc>
+                <procdate>20130731</procdate>
+            </procstep>
+        </lineage>
+    </dataqual>
+    <spdoinfo>
+        <direct>Vector</direct>
+    </spdoinfo>
+    <eainfo>
+        <detailed>
+            <enttyp>
+                <enttypl>GIS.FWC.coral_hardbottom_poly</enttypl>
+                <enttypd>Hardbottom and coral data</enttypd>
+                <enttypds>Producer defined</enttypds>
+            </enttyp>
+            <attr>
+                <attrlabl>SHAPE_area</attrlabl>
+                <attrdef>Area of feature in internal units squared.</attrdef>
+                <attrdefs>Esri</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Positive real numbers that are automatically generated.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>SHAPE_len</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>DESCRIPT</attrlabl>
+                <attrdef>Description of polygon habitat type as reclassified from the source data.</attrdef>
+                <attrdefs>FWRI</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>Coral Reef</edomv>
+                                                						
+                        
+                        <edomvd>Areas containing live coral.</edomvd>
+                                                						
+                        
+                        <edomvds>FWRI</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>SOURCEDATE</attrlabl>
+                <attrdef>Date of source data</attrdef>
+                <attrdefs>FWRI</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Date field. Year only. Multiple years possible.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>SHAPE</attrlabl>
+                <attrdef>Feature geometry.</attrdef>
+                <attrdefs>ESRI</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Coordinates defining the features.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>METADATA</attrlabl>
+                <attrdef>Title of metadata document or source data set.</attrdef>
+                <attrdefs>FWRI</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Metadata title.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>Shape</attrlabl>
+                <attrdef>Feature geometry.</attrdef>
+                <attrdefs>ESRI</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Coordinates defining the features.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+        </detailed>
+    </eainfo>
+    <distinfo>
+        <distrib>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>FWC-FWRI (Florida Fish and Wildlife Conservation Commission-Fish and Wildlife Research Institute)</cntorg>
+                    <cntper>GISLibrarian</cntper>
+                </cntorgp>
+                <cntpos>GIS Data Librarian</cntpos>
+                <cntaddr>
+                    <addrtype>mailing and physical</addrtype>
+                    <address>Fish and Wildlife Research Institute</address>
+                    <address>100 Eighth Avenue Southeast</address>
+                    <city>St. Petersburg</city>
+                    <state>Florida</state>
+                    <postal>33701</postal>
+                    <country>AF</country>
+                </cntaddr>
+                <cntvoice>727-896-8626</cntvoice>
+                <cntfax>727-893-1679</cntfax>
+                <cntemail>GISLibrarian@MyFWC.com</cntemail>
+            </cntinfo>
+        </distrib>
+        <distliab>This data set is in the public domain, and the recipient may not assert any proprietary rights thereto nor represent it to anyone as other than a Florida Fish and Wildlife Conservation Commission produced data set; it is provided "as-is" without warranty of any kind, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose. The user assumes all responsibility for the accuracy and suitability of this data set for a specific application. In no event will the staff of the Florida Fish and Wildlife Conservation Commission be liable for any damages, including lost profits, lost savings, or other incidental or consequential damages arising from the use of or the inability to use this data set.</distliab>
+        <stdorder>
+            <digform>
+                <digtinfo>
+                    <formname>SHP</formname>
+                </digtinfo>
+                <digtopt>
+                    <onlinopt>
+                        <computer>
+                            <networka>
+                                <networkr>http://myfwc.com/research/gis/</networkr>
+                            </networka>
+                        </computer>
+                    </onlinopt>
+                </digtopt>
+            </digform>
+            <fees>None. However, persons or organizations requesting information must provide transfer media if FTP is not available and must pay express shipping costs if express shipping is required.</fees>
+            <ordering>Contact GIS Librarian by e-mail, telephone, or letter explaining which products are needed and providing a brief description of how the products will be used. Also, provide name and address of the person or organization requesting the products.</ordering>
+            <turnarnd>Usually within 10 business days, although, complex requests may take longer</turnarnd>
+        </stdorder>
+    </distinfo>
+    <metainfo>
+        <metd>20130801</metd>
+        <metc>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Florida Fish and Wildlife Conservation Commission-Fish and Wildlife Research Institute</cntorg>
+                    <cntper>GISLibrarian</cntper>
+                </cntorgp>
+                <cntpos>GIS Data Librarian</cntpos>
+                <cntaddr>
+                    <addrtype>mailing and physical</addrtype>
+                    <address>Fish and Wildlife Research Institute</address>
+                    <address>100 Eighth Avenue Southeast</address>
+                    <city>St. Petersburg</city>
+                    <state>Florida</state>
+                    <postal>33701</postal>
+                    <country>AF</country>
+                </cntaddr>
+                <cntvoice>727-896-8626</cntvoice>
+                <cntfax>727-893-1679</cntfax>
+                <cntemail>GISLibrarian@MyFWC.com</cntemail>
+            </cntinfo>
+        </metc>
+        <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+        <metstdv>FGDC-STD-001-1998</metstdv>
+        <mettc>local time</mettc>
+        <metac>No restrictions on metadata</metac>
+        <metuc>Metadata must be distributed with the data set.</metuc>
+        <metsi>
+            <metscs>FWRI-MC</metscs>
+            <metshd>Metadata must be distributed with the data set.</metshd>
+        </metsi>
+    </metainfo>
+</metadata>
