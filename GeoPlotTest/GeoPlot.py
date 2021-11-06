@@ -11,7 +11,7 @@ from shapely.geometry import Point, Polygon
 
 coral_map = gpd.read_file('.\shapemap\Coral_and_Hard_Bottom_Habitats_in_Florida.shp')
 
-fig,ax = plt.subplots(figsize = (15,15))
+fig,ax = plt.subplots(figsize = (10,10))
 coral_map.plot(ax = ax)
 
 
@@ -25,8 +25,7 @@ geometry = [Point(xy) for xy in zip (df["Long"], df["Lat"])]
 geo_df = gpd.GeoDataFrame(df, crs=crs, geometry=geometry)
 geo_df.head()
 
-fig.ax = plt.subplots(figsize = (15, 15))
-coral_map.plot(ax=ax, alpha=.4, color="grey")
+fig.ax = plt.subplots(figsize = (10, 10))
+coral_map.plot(ax=ax, alpha=.4, color="cyan")
 
 geo_df.plot(ax=ax, markersize=20, color="purple", marker="^", label="Bleach Report")
-plt.show()
