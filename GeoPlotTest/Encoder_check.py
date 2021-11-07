@@ -5,4 +5,5 @@ raw_file = open(file_name, 'rb').read()
 result = chdet.detect(raw_file)
 
 char_enc = result['encoding']
+
 print(char_enc)
