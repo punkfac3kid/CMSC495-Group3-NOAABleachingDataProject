@@ -7,7 +7,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import geopandas as gpd
 from shapely import geometry
-from shapely.geometry import Point, Polygon
+from shapely.geometry import Point
 
 coral_map = gpd.read_file('shapeMap\Florida Shore + Reef Map.shp')
 
@@ -23,4 +23,4 @@ coral_map.plot(ax=ax, alpha=.4, color="black")
 
 geo_df.plot(ax=ax, markersize=20, color="purple",
             marker="^", label="Bleach Report")
-plt.show(),
+plt.show()
