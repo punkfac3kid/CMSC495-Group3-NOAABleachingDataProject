@@ -9,6 +9,30 @@ choose which kind of visualization option they would
 like to pursue with their custom dataset. Finally,
 This program also standardizes the data between years
 so that the datasets are interoperable.
+
+BIG_DATA - pandas dataframe. Originally empty, this is
+eventually populated with data that the user selects.
+
+data_dictionary - Dictionary. This variable contains a
+reference to a dictionary of links to data files and their
+corresponding filenames. This is used to retrieve data from
+NCEI's web archive. These data files are then used over the
+rest of the application as the source for our visualizations.
+
+Functions:
+
+standardize_data()
+data_frame_conversion(file_list)
+get_keys(dictionary)
+get_values(dictionary)
+second_gui()
+get_data()
+setup()
+
+Program Design:
+1. The setup function is called immediately on program start.
+2. 
+
 """
 import urllib.request
 #from tkinter import *
@@ -47,7 +71,7 @@ def standardize_data(d_f):
     This module standardizes each individual data file so that
     all of the data are interoperable.
 
-    d_f - incoming data frame for each data file selected by the user.
+    d_f - incoming data frame for each year selected by the user.
 
     column_dict: dictionary. Lists headers found in the original data
     as the keys and then the standard version of the header as the
@@ -63,7 +87,8 @@ def standardize_data(d_f):
     axis = 1, inplace = True)
 
     column_dict = {"SST": "SST(F)", "BOTTOM TEMP": "BOTTOM_TEMP(F)", "AIR TEMP": "AIR_TEMP(F)",
-    "WIND": "WIND_SPEED(KNOTS)", "MIN DEPTH": "MIN_DEPTH(FT)", "MAX DEPTH": "MAX_DEPTH(FT)"}
+    "WIND": "WIND_SPEED(KNOTS)", "MIN DEPTH": "MIN_DEPTH(FT)", "MAX DEPTH": "MAX_DEPTH(FT)",
+    "GIS LATITUDE": "GIS_LATITUDE", "GIS LONGITUDE": "GIS_LONGITUDE"}
 
     d_f = d_f.rename(columns=str.upper)
     d_f = d_f.rename(columns=str.strip)
@@ -72,11 +97,15 @@ def standardize_data(d_f):
     for header in column_list:
         for key in column_dict:
             if key in header:
-                print("Found " + key)
+                #print("Found " + key)
                 real_header = column_dict.get(key)
-                print("New Header: " + real_header)
+                #print("New Header: " + real_header)
                 d_f = d_f.rename(columns = {header: real_header})
+ 
+    #nan_value = float("NaN")
+    #d_f.replace("", nan_value, inplace=True)
     d_f.dropna(subset = ["DATE"], inplace=True)
+    d_f.dropna(subset = ["GIS_LONGITUDE", "GIS_LATITUDE"], how='any', inplace=True)
     return d_f
 
 def data_frame_conversion(file_list):
@@ -202,8 +231,31 @@ def second_gui():
 
 def get_data(dictionary):
     """
-    This function gets the data requested by the user and downloads it to the user's
-    current working directory. It is called from the button click in the setup gui.
+    This function gets the bleachwatch data from the NCEI web archive.
+    It then stores these data files in the user's current working directory.
+
+    directory: String. Stores the String value of the user's current working
+    directory. This is used to build a final filepath for each incomeing file.
+
+    i: integer. This is just a counter variable. This is used to assist in
+    iterating over the list of urls derived from the dictionary passed into
+    this function.
+
+    filename_list: List. This variable stores a list of filenames pulled from
+    the dictionary passed into this function. This is derived by the get_values
+    function.
+
+    url_list: List. This variable stores a list of file urls pulled from the
+    dictionary passed into this function. This is derived from the get_keys
+    function.
+
+    my_filename: String. The current value of each iteration of filename in the 
+    filename_list variable. This is used in a for loop to build retrieve requests
+    for each item in the list.
+
+    file_path: String. This variable stores the full string path of each file.
+    This value is constructed by adding the value of the "directory" variable
+    with "\\" and the value of the "my_filename" variable
     """
 
     print("Loading Data...")
@@ -225,14 +277,28 @@ def get_data(dictionary):
 
 def setup():
     """
-    Initial GUI Construction Below.
+    This function is called from the main block to create the initial
+    setup GUI and get the user started with the application. Note that
+    this function is called after get_data as if the initial GUI is built
+    and the user can interact with the button before the data is loaded, 
+    the application could crash.
+
+    Function: button_click
 
     """
 
     def button_click():
         """
-        This function checks the checkboxes to see which are actually checked. Then it goes
-        through and cpncatenates the data for each selected year to a data frame.
+        This function checks all of the checkboxes to see which have been selected by the user.
+        It also adds all the selected data to a list. Afterwards, it calls a function to
+        iterate over the list and standardize all the input data. This function will also
+        concatenate all the data files into one big data file. This function is called
+        data_frame_conversion and it accepts a list of file paths that will be turned into
+        data frames.
+
+        data_list: List. This list contains a list of local filepaths for each data file
+        that the user has selected. This user indicates that they have selected a data file
+        by selecting the checkbox associated with that year.
         """
         data_list = []
         my_prefix = os.getcwd()
@@ -271,24 +337,15 @@ def setup():
 
     window = tk.Tk()
     window.title("Bleach Watch Data Visualization Tool")
-    #window.geometry("350x200")
     window.eval('tk::PlaceWindow . center')
     frame0 = tk.Frame(master=window)
-    #, width=200, height=100, borderwidth=5)
     frame0.grid()
     label_one = tk.Label(master=frame0, text="Which years of data would you like to visualize?")
     label_one.grid(sticky=tk.NS)
     frame1 = tk.Frame(master=window)
     frame1.grid()
     frame2 = tk.Frame(master=window)
-    #, width=200, height=100)
     frame2.grid()
-    #button = tk.Button(
-    #    master=frame2,
-    #    text="Submit"
-    #)
-    #button.grid(padx=5, pady=5, sticky=tk.EW)
-    #button.bind('<Button-1>', button_click)
 
     button = Button(frame2,
 	text = 'Submit',
@@ -335,3 +392,4 @@ second_gui()
 prefix = os.getcwd()
 final_file_path = prefix + "\\" + "test.csv"
 BIG_DATA.to_csv(final_file_path, index=False)
+print("SENDING OUTPUT DATA TO THIS LOCATION: " + final_file_path)
