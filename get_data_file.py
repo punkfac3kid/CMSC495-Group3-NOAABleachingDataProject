@@ -30,8 +30,36 @@ get_data()
 setup()
 
 Program Design:
-1. The setup function is called immediately on program start.
-2. 
+1. The get_data function is called immediately on program start.
+- This function downloads the data from the NCEI archive.
+2. The setup() function runs next.
+- This function kicks things off by building the GUI and allows
+  the user to start interacting with the application.
+  Within this function, there are a variety of functions built
+  into the GUI. The important one is called button_click() and is
+  called when the user clicks the submit button. This function
+  checks which checkboxes are selected and passes that information
+  to another function: data_frame_conversion(data_list). 
+3. The data_frame_conversion function is called
+- This function takes the CSV files that were selected by the user
+  and converts them to dataframes. It also calls the standardize_data
+  function.
+4. The standardize_data() function is called.
+- This function removes some bad data and standardizes column names.
+  It takes a single data frame as a parameter.
+5. The data_frame_conversion function finishes running.
+- The last part of this function concatenates all the singular data
+  frames and sends them to the BIG_DATA global variable.
+6. The second_gui() method runs from the main block.
+- This function displays the next GUI window and it has a bunch of 
+  functions declared within it. There is one that prints the drop
+  down menu selection to the screen whenever a user chooses a new
+  selection. There is another one that runs when the user clicks the
+  submit button. This function gets the information from the drop down
+  menu and then is set up to run the corresponding graphing function.
+7. In this pre-production version, this application sends the final
+  data to the user's current working directory and prints this to the
+  screen.
 
 """
 import urllib.request
@@ -48,6 +76,8 @@ import pandas as pd
 from pandas_ods_reader import read_ods
 
 BIG_DATA = pd.DataFrame()
+
+standardized_data_frame_list = []
 
 data_dictionary = {
 "https://www.nodc.noaa.gov/archive/arc0073/0126654/2.2/data/1-data/Copy%20of%20BW_2014_Data_MML.csv":
@@ -106,6 +136,8 @@ def standardize_data(d_f):
     #d_f.replace("", nan_value, inplace=True)
     d_f.dropna(subset = ["DATE"], inplace=True)
     d_f.dropna(subset = ["GIS_LONGITUDE", "GIS_LATITUDE"], how='any', inplace=True)
+    d_f.drop(d_f.columns[d_f.columns.str.contains('unnamed',case = False)],
+    axis = 1, inplace = True)
     return d_f
 
 def data_frame_conversion(file_list):
@@ -129,6 +161,8 @@ def data_frame_conversion(file_list):
     standardized data to the BIG_DATA file.
     """
     global BIG_DATA
+    global standardized_data_frame_list
+    standardized_data_frame_list = []
     BIG_DATA = pd.DataFrame()
     for file_name in file_list:
         #print("Loading the following file: " + str(file_name))
@@ -147,7 +181,9 @@ def data_frame_conversion(file_list):
         standard_d_f = standardize_data(d_f)
         del d_f
         BIG_DATA = BIG_DATA.append(standard_d_f, ignore_index=False)
-        del standard_d_f
+        #del standard_d_f
+        standardized_data_frame_list.append(standard_d_f)
+    print(standardized_data_frame_list) 
     print(BIG_DATA)
 
 
@@ -186,7 +222,7 @@ def second_gui():
         new_choice = options.get()
         print(new_choice + " selected")
 
-    def visualize():
+    def visualize(checkbox_list):
         """
         This is where the graphing function calls will go. This is called when the user hits
         "submit" in the second GUI. There should be some if, elif statements here to make
@@ -194,6 +230,8 @@ def second_gui():
         """
         my_selection = options.get()
         print("Running the " + str(my_selection) + " visualization function!")
+        if my_selection == "Map":
+            print("Now mapping the following years: " + str(checkbox_list))
         window.destroy()
 
     window = tk.Tk()
@@ -216,7 +254,7 @@ def second_gui():
 
     options = tk.StringVar(window)
     options.set("Select Graph Type") # default value
-    om1 =tk.OptionMenu(frame1, options, "Line Plot","Bar Graph", "Pie Chart",
+    om1 =tk.OptionMenu(frame1, options, "Line Plot","Bar Graph", "Pie Chart","Map",
     command=new_display_selected)
 
     om1.pack(padx=5, pady=5, fill=tk.BOTH, side=tk.RIGHT, expand=True)
