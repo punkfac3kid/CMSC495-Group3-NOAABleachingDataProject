@@ -74,10 +74,11 @@ import sys
 #import requests
 import pandas as pd
 from pandas_ods_reader import read_ods
+import matplotlib.pyplot as plt
 
 BIG_DATA = pd.DataFrame()
 
-standardized_data_frame_list = []
+#standardized_data_frame_list = []
 
 data_dictionary = {
 "https://www.nodc.noaa.gov/archive/arc0073/0126654/2.2/data/1-data/Copy%20of%20BW_2014_Data_MML.csv":
@@ -122,9 +123,11 @@ def standardize_data(d_f):
 
     d_f = d_f.rename(columns=str.upper)
     d_f = d_f.rename(columns=str.strip)
+
     #column_list = []
     column_list = d_f.columns
     for header in column_list:
+        print(header + ": " + str(d_f[header].dtypes))
         for key in column_dict:
             if key in header:
                 #print("Found " + key)
@@ -182,8 +185,8 @@ def data_frame_conversion(file_list):
         del d_f
         BIG_DATA = BIG_DATA.append(standard_d_f, ignore_index=False)
         #del standard_d_f
-        standardized_data_frame_list.append(standard_d_f)
-    print(standardized_data_frame_list) 
+        #standardized_data_frame_list.append(standard_d_f)
+    #print(standardized_data_frame_list) 
     print(BIG_DATA)
 
 
@@ -214,6 +217,15 @@ def second_gui():
     graph they would like to produce.
     """
 
+    def go_back():
+        """
+        This function kills this window and reloads the original window,
+        allowing the user to modify their original year selections.
+        """
+        window.destroy()
+        setup()
+
+
     def new_display_selected(new_choice):
         """
         This module just prints to the screen the user's selection whenever
@@ -222,7 +234,7 @@ def second_gui():
         new_choice = options.get()
         print(new_choice + " selected")
 
-    def visualize(checkbox_list):
+    def visualize():
         """
         This is where the graphing function calls will go. This is called when the user hits
         "submit" in the second GUI. There should be some if, elif statements here to make
@@ -231,12 +243,12 @@ def second_gui():
         my_selection = options.get()
         print("Running the " + str(my_selection) + " visualization function!")
         if my_selection == "Map":
-            print("Now mapping the following years: " + str(checkbox_list))
+            print("Now mapping the data")
         window.destroy()
 
     window = tk.Tk()
     window.title("Data Visualization Tool")
-    window.geometry("400x125")
+    #window.geometry("400x125")
     window.eval('tk::PlaceWindow . center')
     frame1 = tk.Frame(master=window)
     #, width=200, height=100)
@@ -262,7 +274,12 @@ def second_gui():
     button = Button(frame2,
 	text = 'Submit',
 	command = visualize)
-    button.pack(padx=5, pady=5)
+    button.pack(padx=5, pady=5, side=tk.LEFT)
+
+    back_button = Button(frame2,
+	text = 'Back',
+	command = go_back)
+    back_button.pack(padx=5, pady=5, side=tk.RIGHT)
 
     window.mainloop()
 
@@ -372,6 +389,7 @@ def setup():
         #print(str(data_list))
         data_frame_conversion(data_list)
         window.destroy()
+        second_gui()
 
     window = tk.Tk()
     window.title("Bleach Watch Data Visualization Tool")
@@ -425,9 +443,17 @@ def setup():
 
 get_data(data_dictionary)
 setup()
-second_gui()
+#second_gui()
 
 prefix = os.getcwd()
 final_file_path = prefix + "\\" + "test.csv"
 BIG_DATA.to_csv(final_file_path, index=False)
 print("SENDING OUTPUT DATA TO THIS LOCATION: " + final_file_path)
+
+"""
+print(str(BIG_DATA.dtypes))
+gdf = geopandas.GeoDataFrame(
+    BIG_DATA, geometry=geopandas.points_from_xy(BIG_DATA.GIS_LONGITUDE, BIG_DATA.GIS_LATITUDE))
+BIG_DATA.plot(x="GIS_LONGITUDE", y="GIS_LATITUDE", kind="scatter")
+plt.show()
+"""
