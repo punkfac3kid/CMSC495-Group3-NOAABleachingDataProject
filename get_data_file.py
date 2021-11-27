@@ -75,6 +75,8 @@ import sys
 import pandas as pd
 from pandas_ods_reader import read_ods
 import matplotlib.pyplot as plt
+import chardet as chdet
+import re
 
 BIG_DATA = pd.DataFrame()
 
@@ -97,7 +99,7 @@ data_dictionary = {
 "bleach_watch_2020.csv"}
 
 
-def standardize_data(d_f):
+def standardize_data(d_f, my_data_year):
     """
     This module standardizes each individual data file so that
     all of the data are interoperable.
@@ -112,6 +114,7 @@ def standardize_data(d_f):
     the incoming d_f.
     """
     #print("Standardizing data file")
+    d_f['YEAR'] = my_data_year
     d_f.drop(d_f.columns[d_f.columns.str.contains('unnamed',case = False)],
     axis = 1, inplace = True)
     d_f.drop(d_f.columns[d_f.columns.str.contains('Baseline Indicator',case = False)],
@@ -127,7 +130,7 @@ def standardize_data(d_f):
     #column_list = []
     column_list = d_f.columns
     for header in column_list:
-        print(header + ": " + str(d_f[header].dtypes))
+        #print(header + ": " + str(d_f[header].dtypes))
         for key in column_dict:
             if key in header:
                 #print("Found " + key)
@@ -142,6 +145,16 @@ def standardize_data(d_f):
     d_f.drop(d_f.columns[d_f.columns.str.contains('unnamed',case = False)],
     axis = 1, inplace = True)
     return d_f
+
+def check_encoding(file_name):
+    """
+    Checks the encoding of the file that is passed to it.
+    """
+    raw_file = open(file_name, 'rb').read()
+    result = chdet.detect(raw_file)
+    char_enc = result['encoding']
+    print(char_enc)
+    return char_enc
 
 def data_frame_conversion(file_list):
     """
@@ -168,20 +181,25 @@ def data_frame_conversion(file_list):
     standardized_data_frame_list = []
     BIG_DATA = pd.DataFrame()
     for file_name in file_list:
+        my_encoding = check_encoding(file_name)
+        if my_encoding == "None":
+            my_encoding = "Windows-1252"
         #print("Loading the following file: " + str(file_name))
-
         try:
             #print("TRYING CSV")
-            d_f = pd.read_csv(file_name)
-        except pd.errors.ParserError:
+            d_f = pd.read_csv(file_name, encoding = my_encoding)
+        except:
             try:
                 #print("TRYING ODS")
                 d_f = read_ods(file_name)
-            except pd.errors.ParserError:
+            except:
                 #print("TRYING EXCEL/ODF")
-                d_f = pd.read_excel(file_name, engine="odf")
-
-        standard_d_f = standardize_data(d_f)
+                d_f = pd.read_excel(file_name, engine="odf", encoding = my_encoding)
+        print("My Filename: " + file_name)
+        data_year = re.compile("\d{4}")
+        my_data_year = str(data_year.findall(file_name)[0])
+        print(my_data_year)
+        standard_d_f = standardize_data(d_f, my_data_year)
         del d_f
         BIG_DATA = BIG_DATA.append(standard_d_f, ignore_index=False)
         #del standard_d_f
