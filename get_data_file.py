@@ -77,6 +77,7 @@ from pandas_ods_reader import read_ods
 import matplotlib.pyplot as plt
 import chardet as chdet
 import re
+from graph_functions import *
 
 BIG_DATA = pd.DataFrame()
 
@@ -262,6 +263,14 @@ def second_gui():
         print("Running the " + str(my_selection) + " visualization function!")
         if my_selection == "Map":
             print("Now mapping the data")
+        elif my_selection == "bleaching instances - bar graph":
+            bar_bleach(BIG_DATA)
+        elif my_selection == "bleaching severity - bar graph":
+            bar_severity(BIG_DATA)
+        elif my_selection == "bleaching instances - pie chart":
+            pie_bleach(BIG_DATA)
+        elif my_selection == "bleaching severity - pie chart":
+            pie_severity(BIG_DATA)
         window.destroy()
 
     window = tk.Tk()
@@ -284,7 +293,8 @@ def second_gui():
 
     options = tk.StringVar(window)
     options.set("Select Graph Type") # default value
-    om1 =tk.OptionMenu(frame1, options, "Line Plot","Bar Graph", "Pie Chart","Map",
+    om1 =tk.OptionMenu(frame1, options, "bleaching instances - bar graph","bleaching severity - bar graph",
+    "bleaching instances - pie chart", "bleaching severity - pie chart", "Map",
     command=new_display_selected)
 
     om1.pack(padx=5, pady=5, fill=tk.BOTH, side=tk.RIGHT, expand=True)

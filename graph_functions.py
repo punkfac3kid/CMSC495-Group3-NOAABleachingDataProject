@@ -1,8 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from get_data_file import BIG_DATA
+#from get_data_file import BIG_DATA
 
-def __combined_data_percent():
+def __combined_data_percent(BIG_DATA):
     """
     Creates a combined DataFrame of 2014 and 2015 % bleached
     """
@@ -28,7 +28,7 @@ def __combined_data_percent():
                                                       & (BIG_DATA['YEAR'] == col)])
     return df_combo
 
-def __combined_data_severity():
+def __combined_data_severity(BIG_DATA):
     """
     Creates a combined DataFrame for 2014 and 2015 Severity
     """
@@ -50,7 +50,7 @@ def __combined_data_severity():
                                                          'bleaching') & (BIG_DATA['YEAR'] == col)])
     return df_combo
 
-def __line_graph_data():
+def __line_graph_data(BIG_DATA):
     """
     CURRENTLY FIXING
     Creates a DataFrame to be used by the Temperature Line graph
@@ -62,7 +62,7 @@ def __line_graph_data():
         df_temp[col] = df_sep['BOTTOM_TEMP(F)']
     return df_temp
 
-def bar_bleach():
+def bar_bleach(BIG_DATA):
     """
     Every years percent categories must be tallied
     Will have a multi-bar graph of each year outputting the tallied categories
@@ -71,51 +71,51 @@ def bar_bleach():
     Values: tallied values
     Create new data frame in this format?
     """
-    df_combo = __combined_data_percent()
+    df_combo = __combined_data_percent(BIG_DATA)
     df_combo.plot(kind='bar', figsize=(15, 8))
     plt.xlabel('Percent Bleach Category')
     plt.ylabel('Amount in Each Category')
     plt.title('Comparison of Percent Bleached by Year ')
     plt.show()
 
-def pie_bleach():
+def pie_bleach(BIG_DATA):
     """
     Creates pie chart for every year within the combined dataframe
     Handles the percent bleaching data
     """
-    df_combo = __combined_data_percent()
+    df_combo = __combined_data_percent(BIG_DATA)
     df_combo.groupby(df_combo.index).sum().plot(kind='pie', subplots=True, figsize=(20, 8), autopct='%1.0f%%',
                                                 title='Percent Bleached')
     plt.show()
 
-def bar_severity():
+def bar_severity(BIG_DATA):
     """
     Creates a multi-bar graph for every year
     Handles the bleaching severity data
     """
-    df_combo = __combined_data_severity()
+    df_combo = __combined_data_severity(BIG_DATA)
     df_combo.plot(kind='bar', figsize=(15, 10))
     plt.xlabel('Bleach Severity Category')
     plt.ylabel('Amount in Each Category')
     plt.title('Comparison of Severity by Year ')
     plt.show()
 
-def pie_severity():
+def pie_severity(BIG_DATA):
     """
     Creates a pie graph for every year
     Handles the bleaching severity data
     """
-    df_combo = __combined_data_severity()
+    df_combo = __combined_data_severity(BIG_DATA)
     df_combo.groupby(df_combo.index).sum().plot(kind='pie', subplots=True, figsize=(20, 8), autopct='%1.0f%%',
                                                 title='Bleach Severity')
     plt.show()
 
-def line_graph():
+def line_graph(BIG_DATA):
     """
     CURRENTLY FIXING
     Creates a line graph for every year
     """
-    df_temp = __line_graph_data()
+    df_temp = __line_graph_data(BIG_DATA)
     df_temp.plot(kind='line', x='index')
 
 #implement a line graph of temperature over time
