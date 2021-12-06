@@ -78,6 +78,7 @@ import matplotlib.pyplot as plt
 import chardet as chdet
 import re
 from graph_functions import *
+import geoplot as geop
 
 BIG_DATA = pd.DataFrame()
 
@@ -263,6 +264,7 @@ def second_gui():
         print("Running the " + str(my_selection) + " visualization function!")
         if my_selection == "Map":
             print("Now mapping the data")
+            geop.generate_bleach_map(BIG_DATA)
         elif my_selection == "bleaching instances - bar graph":
             bar_bleach(BIG_DATA)
         elif my_selection == "bleaching severity - bar graph":
