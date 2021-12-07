@@ -20,11 +20,11 @@ The other files included included GIS shape data for the whole landmass of Flori
 #Requirements
 The application was fully developed by the team contributors in Python 3.8.8 (64-bit)
 Package requirements are as follows:
- > pandas
- > pandas_ods_reader
- > matplotlib
- > geopandas
- > shapely
- > tkinter (base module)
- > urllib
+ > pandas,
+ > pandas_ods_reader,
+ > matplotlib,
+ > geopandas,
+ > shapely,
+ > tkinter (base module),
+ > urllib,
  > chardet
