@@ -17,7 +17,7 @@ The ReefMap files are the one currently hardcoded to be used in the application 
 The other files included included GIS shape data for the whole landmass of Florida as well, but at the cost of increased load times when outputting maps.
 
 
-#Requirements
+# Requirements
 The application was fully developed by the team contributors in Python 3.8.8 (64-bit)
 Package requirements are as follows:
  > pandas,
