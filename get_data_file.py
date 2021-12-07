@@ -39,7 +39,7 @@ Program Design:
   into the GUI. The important one is called button_click() and is
   called when the user clicks the submit button. This function
   checks which checkboxes are selected and passes that information
-  to another function: data_frame_conversion(data_list). 
+  to another function: data_frame_conversion(data_list).
 3. The data_frame_conversion function is called
 - This function takes the CSV files that were selected by the user
   and converts them to dataframes. It also calls the standardize_data
@@ -51,7 +51,7 @@ Program Design:
 - The last part of this function concatenates all the singular data
   frames and sends them to the BIG_DATA global variable.
 6. The second_gui() method runs from the main block.
-- This function displays the next GUI window and it has a bunch of 
+- This function displays the next GUI window and it has a bunch of
   functions declared within it. There is one that prints the drop
   down menu selection to the screen whenever a user chooses a new
   selection. There is another one that runs when the user clicks the
@@ -63,26 +63,21 @@ Program Design:
 
 """
 import urllib.request
-#from tkinter import *
 from tkinter import IntVar
 from tkinter import Checkbutton
 from tkinter import Button
 import tkinter as tk
 import os
 import sys
-#from pandas.io.feather_format import read_feather
-#import requests
+import re
 import pandas as pd
 from pandas_ods_reader import read_ods
 import matplotlib.pyplot as plt
 import chardet as chdet
-import re
 from graph_functions import *
 import geoplot as geop
 
 BIG_DATA = pd.DataFrame()
-
-#standardized_data_frame_list = []
 
 data_dictionary = {
 "https://www.nodc.noaa.gov/archive/arc0073/0126654/2.2/data/1-data/Copy%20of%20BW_2014_Data_MML.csv":
@@ -115,7 +110,6 @@ def standardize_data(d_f, my_data_year):
     column_list: list. This is a list of the column names found in
     the incoming d_f.
     """
-    #print("Standardizing data file")
     d_f['YEAR'] = my_data_year
     d_f.drop(d_f.columns[d_f.columns.str.contains('unnamed',case = False)],
     axis = 1, inplace = True)
@@ -129,19 +123,13 @@ def standardize_data(d_f, my_data_year):
     d_f = d_f.rename(columns=str.upper)
     d_f = d_f.rename(columns=str.strip)
 
-    #column_list = []
     column_list = d_f.columns
     for header in column_list:
-        #print(header + ": " + str(d_f[header].dtypes))
         for key in column_dict:
             if key in header:
-                #print("Found " + key)
                 real_header = column_dict.get(key)
-                #print("New Header: " + real_header)
                 d_f = d_f.rename(columns = {header: real_header})
- 
-    #nan_value = float("NaN")
-    #d_f.replace("", nan_value, inplace=True)
+
     d_f.dropna(subset = ["DATE"], inplace=True)
     d_f.dropna(subset = ["GIS_LONGITUDE", "GIS_LATITUDE"], how='any', inplace=True)
     d_f.drop(d_f.columns[d_f.columns.str.contains('unnamed',case = False)],
@@ -179,23 +167,17 @@ def data_frame_conversion(file_list):
     standardized data to the BIG_DATA file.
     """
     global BIG_DATA
-    global standardized_data_frame_list
-    standardized_data_frame_list = []
     BIG_DATA = pd.DataFrame()
     for file_name in file_list:
         my_encoding = check_encoding(file_name)
         if my_encoding == "None":
             my_encoding = "Windows-1252"
-        #print("Loading the following file: " + str(file_name))
         try:
-            #print("TRYING CSV")
             d_f = pd.read_csv(file_name, encoding = my_encoding)
         except:
             try:
-                #print("TRYING ODS")
                 d_f = read_ods(file_name)
             except:
-                #print("TRYING EXCEL/ODF")
                 d_f = pd.read_excel(file_name, engine="odf", encoding = my_encoding)
         print("My Filename: " + file_name)
         data_year = re.compile("\d{4}")
@@ -204,10 +186,8 @@ def data_frame_conversion(file_list):
         standard_d_f = standardize_data(d_f, my_data_year)
         del d_f
         BIG_DATA = BIG_DATA.append(standard_d_f, ignore_index=False)
-        #del standard_d_f
-        #standardized_data_frame_list.append(standard_d_f)
-    #print(standardized_data_frame_list) 
-    print(BIG_DATA)
+    #print(BIG_DATA)
+    del standard_d_f
 
 
 def get_keys(dictionary):
@@ -217,7 +197,6 @@ def get_keys(dictionary):
     key_list = []
     for key in dictionary.keys():
         key_list.append(key)
-    #print(str(key_list))
     return key_list
 
 def get_values(dictionary):
@@ -227,7 +206,6 @@ def get_values(dictionary):
     value_list = []
     for value in dictionary.values():
         value_list.append(value)
-    #print(str(value_list))
     return value_list
 
 
@@ -277,14 +255,11 @@ def second_gui():
 
     window = tk.Tk()
     window.title("Data Visualization Tool")
-    #window.geometry("400x125")
     window.eval('tk::PlaceWindow . center')
     frame1 = tk.Frame(master=window)
-    #, width=200, height=100)
     frame1.pack()
 
     frame2 = tk.Frame(master=window)
-    #, width=200, height=100)
     frame2.pack()
 
     greeting = tk.Label(master=frame1, text="How would you like to visualize these data?")
@@ -294,7 +269,7 @@ def second_gui():
     label_one.pack(padx=5, pady=5, fill=tk.BOTH, side=tk.LEFT, expand=True)
 
     options = tk.StringVar(window)
-    options.set("Select Graph Type") # default value
+    options.set("Select Graph Type")
     om1 =tk.OptionMenu(frame1, options, "bleaching instances - bar graph","bleaching severity - bar graph",
     "bleaching instances - pie chart", "bleaching severity - pie chart", "Map",
     command=new_display_selected)
@@ -334,7 +309,7 @@ def get_data(dictionary):
     dictionary passed into this function. This is derived from the get_keys
     function.
 
-    my_filename: String. The current value of each iteration of filename in the 
+    my_filename: String. The current value of each iteration of filename in the
     filename_list variable. This is used in a for loop to build retrieve requests
     for each item in the list.
 
@@ -350,9 +325,7 @@ def get_data(dictionary):
     url_list = get_keys(dictionary)
     for my_filename in filename_list:
         my_url = url_list[i]
-        #print("URL listed as: " + str(my_url))
         file_path = directory + "\\" + my_filename
-        #print("Grabbing file and saving it here: " + file_path)
         try:
             urllib.request.urlretrieve(my_url, file_path)
         except FileNotFoundError:
@@ -365,7 +338,7 @@ def setup():
     This function is called from the main block to create the initial
     setup GUI and get the user started with the application. Note that
     this function is called after get_data as if the initial GUI is built
-    and the user can interact with the button before the data is loaded, 
+    and the user can interact with the button before the data is loaded,
     the application could crash.
 
     Function: button_click
@@ -388,35 +361,27 @@ def setup():
         data_list = []
         my_prefix = os.getcwd()
         if check_var1.get() == 1:
-            #print("2014 Checked")
             file_path = my_prefix + "\\" + "bleach_watch_2014.csv"
             data_list.append(file_path)
         if check_var2.get() == 1:
-            #print("2015 Checked")
             file_path = my_prefix + "\\" + "bleach_watch_2015.csv"
             data_list.append(file_path)
         if check_var3.get() == 1:
-            #print("2016 Checked")
             file_path = my_prefix + "\\" + "bleach_watch_2016.csv"
             data_list.append(file_path)
         if check_var4.get() == 1:
-            #print("2017 Checked")
             file_path = my_prefix + "\\" + "bleach_watch_2017.csv"
             data_list.append(file_path)
         if check_var5.get() == 1:
-            #print("2018 Checked")
             file_path = my_prefix + "\\" + "bleach_watch_2018.csv"
             data_list.append(file_path)
         if check_var6.get() == 1:
-            #print("2019 Checked")
             file_path = my_prefix + "\\" + "bleach_watch_2019.csv"
             data_list.append(file_path)
         if check_var7.get() == 1:
-            #print("2020 Checked")
             file_path = my_prefix + "\\" + "bleach_watch_2020.csv"
             data_list.append(file_path)
 
-        #print(str(data_list))
         data_frame_conversion(data_list)
         window.destroy()
         second_gui()
@@ -473,17 +438,3 @@ def setup():
 
 get_data(data_dictionary)
 setup()
-#second_gui()
-
-prefix = os.getcwd()
-final_file_path = prefix + "\\" + "test.csv"
-BIG_DATA.to_csv(final_file_path, index=False)
-print("SENDING OUTPUT DATA TO THIS LOCATION: " + final_file_path)
-
-"""
-print(str(BIG_DATA.dtypes))
-gdf = geopandas.GeoDataFrame(
-    BIG_DATA, geometry=geopandas.points_from_xy(BIG_DATA.GIS_LONGITUDE, BIG_DATA.GIS_LATITUDE))
-BIG_DATA.plot(x="GIS_LONGITUDE", y="GIS_LATITUDE", kind="scatter")
-plt.show()
-"""
