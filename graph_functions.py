@@ -1,7 +1,5 @@
 import pandas as pd
-#import numpy as np
 import matplotlib.pyplot as plt
-#from get_data_file import BIG_DATA
 
 def __combined_data_percent(BIG_DATA):
     """
@@ -75,25 +73,16 @@ def __combined_data_severity(BIG_DATA):
 
     return df_combo
 
-"""def __line_graph_data(BIG_DATA):
-    
-    #Creates a list with all the years within BIG_DATA
-    years_list = BIG_DATA['YEAR'].str.strip().unique()
-    #Creates an empty dataframed for the following loop to add columns too
-    df_combined = pd.DataFrame()
-    #A for loop that iterates through the years, locates the data associated to the year, and adds that years
-    #BOTTOM_TEMP(F) column too df_combined
-    for year in years_list:
-        df_temp = BIG_DATA.loc[BIG_DATA['YEAR'] == year]
-        df_combined[year] = df_temp['BOTTOM_TEMP(F)']
-        # If the data in the cell equals 'none' it will change it too NaN
-        df_combined[year] = df_combined.mask(df_combined[year].str.strip().str.lower() == 'no data')
-        df_combined[year] = pd.to_numeric(df_combined[year])
-        df_combined[year] = df_combined[year].fillna(df_combined[year].mean())
-
-    return df_combined"""
-
 def __temp_graph_data(BIG_DATA):
+    """
+    Creates a combined dataframe for the temperature graphs
+    uses the .loc() method to find the specified years data
+    fills any empty cell with string 'no data'
+    replaces all 'no data' and 'not provided' strings with NaN
+    Calculates the mean value of all numerical values within the cells of each years
+    allocates data to specified year
+    returns temp dataframe
+    """
     years_list = BIG_DATA['YEAR'].str.strip().unique()
     df_combo = pd.DataFrame(0, columns=years_list,
                             index=['AIR_TEMP(F)', 'SST(F)', 'BOTTOM_TEMP(F)'])
@@ -109,14 +98,12 @@ def __temp_graph_data(BIG_DATA):
         df_combo.at['BOTTOM_TEMP(F)', year] = df_combined.mean(axis=0)
 
         df_combined = df_temp['SST(F)'].apply(str)
-        # If the data in the cell equals 'none' it will change it too NaN
         df_combined = df_combined.mask(df_combined.str.strip().str.lower() == 'no data')
         df_combined = df_combined.mask(df_combined.str.strip().str.lower() == 'not provided')
         df_combined = pd.to_numeric(df_combined)
         df_combo.at['SST(F)', year] = df_combined.mean(axis=0)
 
         df_combined = df_temp['AIR_TEMP(F)'].apply(str)
-        # If the data in the cell equals 'none' it will change it too NaN
         df_combined = df_combined.mask(df_combined.str.strip().str.lower() == 'no data')
         df_combined = df_combined.mask(df_combined.str.strip().str.lower() == 'not provided')
         df_combined = pd.to_numeric(df_combined)
@@ -174,8 +161,8 @@ def pie_severity(BIG_DATA):
 
 def temp_graph(BIG_DATA):
     """
-    CURRENTLY FIXING
-    Creates a line graph for every year
+    Creates a multi-bar graph for every year
+    Handles the Temperature datas, Creates and average of each years temperatures
     """
     df_temp = __temp_graph_data(BIG_DATA)
     df_temp.plot(kind='bar', figsize=(15, 8))
@@ -183,24 +170,3 @@ def temp_graph(BIG_DATA):
     plt.ylabel('Amount in Each Category')
     plt.title('Comparison of Percent Bleached by Year ')
     plt.show()
-
-#implement a line graph of temperature over time
-#df_sep = BIG_DATA[BIG_DATA['YEAR'] == '2014']
-#df_temp = df_sep[df_sep['BOTTOM_TEMP(F)'] != 'no data']
-#print(line_graph())
-#line_graph(BIG_DATA)
-
-
-"""#Creates a list with all the years within BIG_DATA
-years_list = BIG_DATA['YEAR'].str.strip().unique()
-#Creates an empty dataframed for the following loop to add columns too
-df_combined = pd.DataFrame()
-#A for loop that iterates through the years, locates the data associated to the year, and adds that years
-#BOTTOM_TEMP(F) column too df_combined
-for year in years_list:
-    df_temp = BIG_DATA.loc[BIG_DATA['YEAR'] == year]
-    df_combined[year] = df_temp['BOTTOM_TEMP(F)']
-#If the data in the cell equals 'none' it will change it too NaN
-df_combined.mask(df_combined.str.strip().str.lower() == 'none')
-#Changes type to int
-pd.to_numeric(df_combined)"""
