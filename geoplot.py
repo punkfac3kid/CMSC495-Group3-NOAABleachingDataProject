@@ -32,7 +32,7 @@ def generate_bleach_map(df):
     del df
 
     fig, ax = plt.subplots(figsize=(10, 10))
-    CORAL_MAP.plot(ax=ax, alpha=.3, color='purple')
+    CORAL_MAP.plot(ax=ax, alpha=.3, color='black')
 
     geo_df_2014 = geo_df[geo_df['YEAR'].isin(['2014', 2014, float(2014)])]
 
