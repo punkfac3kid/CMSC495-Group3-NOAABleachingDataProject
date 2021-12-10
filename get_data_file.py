@@ -71,8 +71,6 @@ import os
 import sys
 import re
 import pandas as pd
-from pandas_ods_reader import read_ods
-import matplotlib.pyplot as plt
 import chardet as chdet
 from graph_functions import *
 import geoplot as geop
@@ -175,10 +173,7 @@ def data_frame_conversion(file_list):
         try:
             d_f = pd.read_csv(file_name, encoding = my_encoding)
         except:
-            try:
-                d_f = read_ods(file_name)
-            except:
-                d_f = pd.read_excel(file_name, engine="odf", encoding = my_encoding)
+            d_f = pd.read_excel(file_name, engine="odf", encoding = my_encoding)
         print("My Filename: " + file_name)
         data_year = re.compile("\d{4}")
         my_data_year = str(data_year.findall(file_name)[0])
