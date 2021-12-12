@@ -173,7 +173,7 @@ def data_frame_conversion(file_list):
         try:
             d_f = pd.read_csv(file_name, encoding = my_encoding)
         except:
-            d_f = pd.read_excel(file_name, engine="odf", encoding = my_encoding)
+            d_f = pd.read_excel(file_name, engine="odf")
         print("My Filename: " + file_name)
         data_year = re.compile("\d{4}")
         my_data_year = str(data_year.findall(file_name)[0])
