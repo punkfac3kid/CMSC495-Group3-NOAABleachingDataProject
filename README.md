@@ -18,7 +18,8 @@ The other files included included GIS shape data for the whole landmass of Flori
 
 
 # Final Package
-The application and setup help files can be downloaded in a packaged ZIP from here: https://drive.google.com/file/d/1gFk2B-l5xfl6maLY-Krg1o1rtuMRRuPR/view?usp=sharing
+The application and setup help files can be downloaded in a packaged ZIP from here: https://drive.google.com/file/d/1dzC9BFybcjHxNn8kZ75NywhLl1MhtoXw/view?usp=sharing
+
 
 # Requirements
 The application was fully developed by the team contributors in Python 3.8.8 (64-bit)
