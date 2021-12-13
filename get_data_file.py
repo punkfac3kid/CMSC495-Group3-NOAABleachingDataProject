@@ -235,6 +235,8 @@ def second_gui():
             pie_bleach(BIG_DATA)
         elif my_selection == "bleaching severity - pie chart":
             pie_severity(BIG_DATA)
+        elif my_selection == "temperature readings - bar graph":
+            temp_graph(BIG_DATA)
         window.destroy()
 
     window = tk.Tk()
@@ -255,7 +257,7 @@ def second_gui():
     options = tk.StringVar(window)
     options.set("Select Graph Type")
     om1 =tk.OptionMenu(frame1, options, "bleaching instances - bar graph","bleaching severity - bar graph",
-    "bleaching instances - pie chart", "bleaching severity - pie chart", "Map",
+    "bleaching instances - pie chart", "bleaching severity - pie chart", "temperature readings - bar graph", "Map",
     command=new_display_selected)
 
     om1.pack(padx=5, pady=5, fill=tk.BOTH, side=tk.RIGHT, expand=True)
