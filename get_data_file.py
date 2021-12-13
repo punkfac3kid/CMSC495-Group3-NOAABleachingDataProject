@@ -1,6 +1,5 @@
 """
 get_data_file.py
-
 This program was written by Zack Mason on 11/1/2021.
 This application creates a series of GUI windows that
 allow the user to download and subset Florida keys
@@ -9,18 +8,14 @@ choose which kind of visualization option they would
 like to pursue with their custom dataset. Finally,
 This program also standardizes the data between years
 so that the datasets are interoperable.
-
 BIG_DATA - pandas dataframe. Originally empty, this is
 eventually populated with data that the user selects.
-
 data_dictionary - Dictionary. This variable contains a
 reference to a dictionary of links to data files and their
 corresponding filenames. This is used to retrieve data from
 NCEI's web archive. These data files are then used over the
 rest of the application as the source for our visualizations.
-
 Functions:
-
 standardize_data()
 data_frame_conversion(file_list)
 get_keys(dictionary)
@@ -28,7 +23,6 @@ get_values(dictionary)
 second_gui()
 get_data()
 setup()
-
 Program Design:
 1. The get_data function is called immediately on program start.
 - This function downloads the data from the NCEI archive.
@@ -60,7 +54,6 @@ Program Design:
 7. In this pre-production version, this application sends the final
   data to the user's current working directory and prints this to the
   screen.
-
 """
 import urllib.request
 from tkinter import IntVar
@@ -73,6 +66,7 @@ import re
 import pandas as pd
 import chardet as chdet
 from graph_functions import *
+import os.path
 import geoplot as geop
 
 BIG_DATA = pd.DataFrame()
@@ -98,13 +92,10 @@ def standardize_data(d_f, my_data_year):
     """
     This module standardizes each individual data file so that
     all of the data are interoperable.
-
     d_f - incoming data frame for each year selected by the user.
-
     column_dict: dictionary. Lists headers found in the original data
     as the keys and then the standard version of the header as the
     value. This is used to replace the column headers later on.
-
     column_list: list. This is a list of the column names found in
     the incoming d_f.
     """
@@ -155,11 +146,9 @@ def data_frame_conversion(file_list):
     saved as ods files python has trouble converting them into
     data frames. However, when they are saved as csv files but
     read like ods files, python has no issues.
-
     This module also uses the BIG_DATA global variable. This is
     done for ease of access. The file referenced in BIG_DATA will
     need to be accessible by multiple graphing functions.
-
     This module also calls the standardize_data module to edit
     the data frames that are produced here. It then appends the
     standardized data to the BIG_DATA file.
@@ -288,26 +277,20 @@ def get_data(dictionary):
     """
     This function gets the bleachwatch data from the NCEI web archive.
     It then stores these data files in the user's current working directory.
-
     directory: String. Stores the String value of the user's current working
     directory. This is used to build a final filepath for each incomeing file.
-
     i: integer. This is just a counter variable. This is used to assist in
     iterating over the list of urls derived from the dictionary passed into
     this function.
-
     filename_list: List. This variable stores a list of filenames pulled from
     the dictionary passed into this function. This is derived by the get_values
     function.
-
     url_list: List. This variable stores a list of file urls pulled from the
     dictionary passed into this function. This is derived from the get_keys
     function.
-
     my_filename: String. The current value of each iteration of filename in the
     filename_list variable. This is used in a for loop to build retrieve requests
     for each item in the list.
-
     file_path: String. This variable stores the full string path of each file.
     This value is constructed by adding the value of the "directory" variable
     with "\\" and the value of the "my_filename" variable
@@ -323,9 +306,13 @@ def get_data(dictionary):
         file_path = directory + "\\" + my_filename
         try:
             urllib.request.urlretrieve(my_url, file_path)
-        except FileNotFoundError:
+        except:
             print("Couldn't retrieve file " + my_filename + " \nfrom: " + str(my_url))
-            sys.exit()
+            if os.path.exists(file_path) == True:
+                print("Using local files as backup. These may be out of date.")
+            else:
+                print("Local files not found. Exiting program")
+                sys.exit()
         i += 1
 
 def setup():
@@ -335,9 +322,7 @@ def setup():
     this function is called after get_data as if the initial GUI is built
     and the user can interact with the button before the data is loaded,
     the application could crash.
-
     Function: button_click
-
     """
 
     def button_click():
@@ -348,7 +333,6 @@ def setup():
         concatenate all the data files into one big data file. This function is called
         data_frame_conversion and it accepts a list of file paths that will be turned into
         data frames.
-
         data_list: List. This list contains a list of local filepaths for each data file
         that the user has selected. This user indicates that they have selected a data file
         by selecting the checkbox associated with that year.
