@@ -12,10 +12,13 @@ Once selected; years are conglomerated into a larger data frame with data pulled
 
 After years are loaded into the BIG_DATA frame for operations and an operation is selected above; the data is read in by the functions called and a MatPlotLib graph, chart, or map is output to the user.
 The map is functionally the heaviest part of the application because of the SHP file backdrop that has been added for improved coordinate plotting in the figure that is output after selection.
-To make sure that the application works if source code is cloned, the user will also need to acquire the shapeMap directory from the following link: https://drive.google.com/file/d/1EL3rUBYzMt-DcyjuizoH7chwmeaTixkJ/view?usp=sharing
+The ShapeMap directory included with the project is the functional smaller scale SHP file of the Florida Coral reef systems.
 The ReefMap files are the one currently hardcoded to be used in the application as it is just a map of the Southern shore reef systems off the coast of Florida.
 The other files included included GIS shape data for the whole landmass of Florida as well, but at the cost of increased load times when outputting maps.
 
+
+# Final Package
+The application and setup help files can be downloaded in a packaged ZIP from here: https://drive.google.com/file/d/1gFk2B-l5xfl6maLY-Krg1o1rtuMRRuPR/view?usp=sharing
 
 # Requirements
 The application was fully developed by the team contributors in Python 3.8.8 (64-bit)
