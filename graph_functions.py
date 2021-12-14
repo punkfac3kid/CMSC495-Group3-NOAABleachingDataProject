@@ -166,7 +166,7 @@ def temp_graph(BIG_DATA):
     """
     df_temp = __temp_graph_data(BIG_DATA)
     df_temp.plot(kind='bar', figsize=(15, 8))
-    plt.xlabel('Percent Bleach Category')
-    plt.ylabel('Amount in Each Category')
-    plt.title('Comparison of Percent Bleached by Year ')
+    plt.xlabel('Temperature Category')
+    plt.ylabel('Average Temperature')
+    plt.title('Comparison of Average Temperature by Year')
     plt.show()
